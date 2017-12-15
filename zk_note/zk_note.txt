@@ -1,1 +1,6 @@
 用来记录自己zookeeper代码的随身笔记
+
+zookeeper是google的chubby项目的开源实现,它曾经作为Hadoop的子项目,在大数据领域得到广泛应用。
+zookeeper以Fast Paxos算法为基础,同时为了解决活锁问题,对Fast Paxos算法进行了优化,
+因此也可以广泛用于大数据之外的其他分布式系统,为大型分布式系统提供可靠的协作处理功能。
+
