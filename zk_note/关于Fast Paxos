@@ -8,3 +8,69 @@ MSR-TR-2005-112
 
 To appear in Distributed Computing.
 
+
+Microsoft Research
+Microsoft Corporation
+One Microsoft Way
+Redmond,WA 98050
+参考地址  http://www.research.microsoft.com
+
+abstract
+[概要]
+  As used in practice,traditional consensus algorithms require three message delays before any process can
+  learn the chosen value. Fast Paxos is an extension of the classic Paxos algorithm that allows the value to
+  be learned in two message delays.How and why the algorithm works are explained informally,and a TLA+
+  specification of the algorithm appears as an appendix.
+  consensus 一致性地
+  extension 扩展地
+
+Introduction
+The consensus problem requires a set of processes to choose a single value.This paper considers the consensus
+problem in an asynchronous message-passing system subject to non-Byzantine faults.A solution to this problem
+must never allow two different values to be chosen despite any number of failures,and it must eventually
+choose a value if enough processes are nonfaulty and can communicate with one another.
+
+In the traditional statement of the consensus problem,each process proposes a value and the chosen value must
+be one of those proposed values.It is not hard to see that any solution requires at least two message delays
+ before any process learns what value has been chosen.A number of algorithms achieve this delay in the best
+ case.The classic Paxos algorithm is popular because it achieves the optimal delay in the normal case when
+ used in practical systems.
+
+ achieves the optimal delay
+
+The apparently optimal number of message delays required by traditional consensus algorithms is illusory-an
+artifact of the traditional problem statement in which values are chosen by the same processes that propose
+them.In many applications,values are not proposed by the same processes that choose the value.For example,in
+a client/server system,the clients propose the next command to be executed and the servers choose one proposed
+ command.when a traditional consensus algorithm is used in such a system,three message delays are required
+ between when a client proposes a command and when some process learns which command has been chosen.
+
+A fast consensus algorithm is one in which a  process can learn the chosen value within two message delays
+of when it is proposed,even if values are proposed and chosen by different sets of processes.It has been
+shown that no general consensus algorithm can guarantee learning within two message delays if competing
+proposals collide-that is,if two different values are proposed concurrently.A fast consensus algorithm
+therefore cannot always be fast in the event of collision.
+
+Fast Paxos is a fast consensus algorithm that is a variant of classic Paxos.In the normal case,leaning occurs
+ in two message delays when there is no collision and can be guaranteed to occur in three message delays even
+ with a collision.Moreover,it can achieve any desired degree of fault tolerance using the smallest possible
+ number of processes.
+
+先到这里，其实这个算法还是很复杂的，你们非要认为很简单!好像全世界都很简单!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
